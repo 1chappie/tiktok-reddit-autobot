@@ -3,5 +3,6 @@ geckodriver.log
 *.cookies
 *TEMP*.mp3
 render/
-output/
+temp/
 backgrounds/
+.DS_Store
