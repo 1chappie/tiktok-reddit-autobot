@@ -233,6 +233,6 @@ def _upload(
 def upload(post, time):
     path = f"output/{post['id']}.mp4"
     title = f"\"{post['title']}\" on r/{post['sub']}"
-    tags = ["reddit", "parkour", "fyp", "tts", "askreddit", "aita", "writingprompts"]
+    tags = ["reddit", "parkour", "fyp", "tts", "askreddit", "aita"]
     tags.append(post['sub'])
     _upload(path, title, tags = tags, schedule_time = float(time))
