@@ -3,7 +3,7 @@ import json
 import random
 import re
 from prawcore.exceptions import ResponseException
-from utils import sanitize_text
+from utils import sanitize_text, config
 import praw
 from praw.models import MoreComments
 from prawcore.exceptions import ResponseException
@@ -25,7 +25,7 @@ def is_post_valid(post, post_type):
         (post_type== "comments" and post.num_comments < 30) or \
         (post_type == "story" and post.selftext == "") or \
         (post_type == "story" and post.selftext in ["[removed]", "[deleted]"]) or \
-        (post_type == "story" and len(post.selftext) >6000):
+        (post_type == "story" and len(post.selftext) >8000):
         print("Invalid post: " + str(post))
         return False
         
@@ -111,6 +111,8 @@ def scrape_post(sub, post_type):
         except OSError:
             print("The spacy model can't load. You need to install it with \npython -m spacy download en")
             exit(1)
+        nlp.add_pipe('sentencizer')
+        nlp.get_pipe('sentencizer').max_length = 300
         doc = nlp(text)
         data["text"] = [sent.text for sent in doc.sents if sent.text not in ["x200B", "", " "]]
         
