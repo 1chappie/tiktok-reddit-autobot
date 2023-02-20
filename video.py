@@ -7,14 +7,13 @@ from utils import config
 resolution = (1080,1920)
 
 def random_start_end(video_len, clip_len):
-    random.seed(datetime.datetime.now())
     x = random.randint(100, int(video_len - clip_len))
     return (x, x + video_len)
 
 def render_video(post):
     # Create clip 'flow'
     flow = ['post']
-    for i in range(10):
+    for i in range(50):
         if os.path.exists(f'temp/{i}.mp3'):
             flow.append(str(i))
 
@@ -33,17 +32,14 @@ def render_video(post):
             .crossfadeout(0.2)
             )
         duration += sound_clips[-1].duration
-        # Ensure length of video
-        if duration > 90:
-            break
 
     # Combine all the clips into one
     image_clips = concatenate_videoclips(image_clips).set_position(("center",300))
     sound_clips = concatenate_audioclips(sound_clips)
 
     # 3 minute limit
-    if sound_clips.duration > 60*2.9:
-        return False
+    # if sound_clips.duration > 60*2.9:
+    #     return False
 
     #Loading background
     background_clip = "rsc/backgrounds/" + random.choice(os.listdir("rsc/backgrounds"))
@@ -52,10 +48,20 @@ def render_video(post):
         *random_start_end(background.duration, image_clips.duration)
         )
     
+    #Load music
+    song = AudioFileClip("rsc/songs/" + random.choice(os.listdir("rsc/songs")))
+    song = afx.audio_loop(song, duration=sound_clips.duration)
+    
     # Composite all the components
+    song = song.set_start(0)
+    song = song.volumex(0.2)
+    sound_clips = sound_clips.set_start(0)
+    composite_audio = CompositeAudioClip([song, sound_clips])
+    composite_audio = composite_audio.set_duration(sound_clips.duration)
+    
     composite = CompositeVideoClip([background,image_clips],resolution)
-    composite.audio = sound_clips
-    composite.duration = sound_clips.duration
+    composite.audio = composite_audio
+    composite.duration = composite_audio.duration
     
     #Speed up
     composite = composite.speedx(factor=config["speed"])
