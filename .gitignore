@@ -4,5 +4,6 @@ geckodriver.log
 *TEMP*.mp3
 render/
 temp/
-backgrounds/
+rsc/backgrounds/
+output/
 .DS_Store
