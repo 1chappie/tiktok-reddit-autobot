@@ -49,7 +49,7 @@ def assertSuccess(url, r):
 		printError(url, r)	
 	return r.status_code == 200
 
-def upload_to_tiktok(
+def _upload(
     video, 
     title, 
     session_id = config["tiktok_sessionid"],
@@ -229,3 +229,10 @@ def upload_to_tiktok(
 		return False
 
 	return True
+
+def upload(post, time):
+    path = f"output/{post['id']}.mp4"
+    title = f"\"{post['title']}\" on r/{post['sub']}"
+    tags = ["reddit", "parkour", "fyp", "tts", "askreddit", "aita", "writingprompts"]
+    tags.append(post['sub'])
+    _upload(path, title, tags = tags, schedule_time = float(time))
