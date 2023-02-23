@@ -1,6 +1,11 @@
 undetected-chromedriver
-selenium
-edge-tts
 moviepy
 requests
 pyyaml
+Pillow
+playwright
+praw
+prawcore
+toml
+tomlkit
+spacy
