@@ -1,6 +1,7 @@
 undetected-chromedriver
 moviepy
 requests
+selenium
 pyyaml
 Pillow
 playwright

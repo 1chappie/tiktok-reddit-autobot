@@ -3,7 +3,7 @@ import random
 import sys
 from scrape import scrape_post
 from upload import upload
-from utils import config, clean_temp, log
+from utils import config, clean_temp, log, first_run
 from image import generate_images
 from tts import generate_audio
 from video import render_video
@@ -19,6 +19,7 @@ def do_order(subreddit, post_type, time = 0):
         
 if __name__ == '__main__':
     random.seed(datetime.now())
+    first_run()
     if len(sys.argv) == 1:
         do_order(*random.choice(config["default_pool"]))
     else:

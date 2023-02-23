@@ -49,3 +49,10 @@ def log(post):
 def clean_temp():
     for file in os.listdir('temp'):
         os.remove(f'temp/{file}')
+
+def first_run():
+    if not os.path.exists('temp'):
+        os.mkdir('temp')
+        
+    if not os.path.exists('output'):
+        os.mkdir('output')

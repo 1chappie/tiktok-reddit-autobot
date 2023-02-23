@@ -1,16 +1,18 @@
-# AskReddit TikTok Bot
-Automatic content bot using Selenium to scrape AskReddit and and post to TikTok with video rendering with MoviePY.
+# TikTok automatic Reddit content bot
+Automatic content bot - can scrape, render and upload content to TikTok from any subreddit.
+# Setup
+1. `pip install -r requirements.txt` (you may or may not need to have Chrome installed)
+2. Populate all categories in `config.yaml`
+   `tiktok_sessionid`: can be obtained from the cookie header after logging into any TikTok
+   `reddit_clientid`, `reddit_clientsecret`: can be obtained from [here](https://www.reddit.com/prefs/apps/) after creating a new web app
+   `reddit_username`, `reddit_password`: your Reddit username and password
 # Usage
-Requires some manual setup, 
-1. Install pip packages from `requirements.txt`
-2. Get cookies for TikTok & Reddit
-   1. Sign into TikTok in your browser by choice
-   2. Open DevTools and go to the network tab
-   3. Reload the page and find the sent cookie header
-   4. Copy the header and save to `tiktok_cookies` in `config.yaml`
-   5. Repeat for Reddit, however there is no need to sign in, only accept cookies to get rid of notice (`reddit_cookies` this time)
-3. Add background video files to `backgrounds` folder, find some [here](https://www.pexels.com/videos/)
-3. Enjoy!
-
-# Unable to properly upload or want more advanced uploading features like audios?
-Check out my [tiktok-uploader](https://github.com/edde746/tiktok-uploader).
+0. To customize the assets:
+   `rsc/background`: .mp4 videos of choice (randomly selected)
+   `rsc/songs`: songs of choice (randomly selected, can be empty)
+1a. Run `python3 main.py` to scrape and upload content from the default pool of subreddits
+1b. Run `pyhton3 main.py <subreddit> <post_type>` to scrape and upload content from a specific subreddit
+   `<subreddit>`: the subreddit to scrape from
+   `<post_type>`: the type of post to scrape from (can be `story` or `comments`)
+   (`story` posts are posts with only a title and a body - split into cards with moviepy and spacy, 
+   `comments` posts are posts with a title and a comment thread - screenshotted with selenium)
