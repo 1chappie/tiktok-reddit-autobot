@@ -20,14 +20,6 @@ def create_bot(headless=False):
     bot.set_window_size(1920, 1080)
     return bot
 
-def load_orders(path):
-    orders = []
-    with open(path, 'r') as f:
-        lines = f.readlines()
-        for line in lines:
-            orders.append(line.split())
-    return orders
-
 def sanitize_text(text):
     # remove any urls from the text
     regex_urls = r"((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*"
