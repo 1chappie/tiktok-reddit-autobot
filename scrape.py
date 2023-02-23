@@ -35,7 +35,7 @@ def is_comment_valid(comment):
     if isinstance(comment, MoreComments) or \
         comment.body in ["[removed]", "[deleted]"] or \
         comment.stickied or \
-        len(comment.body) > 300 or \
+        len(comment.body) > 230 or \
         len(comment.body) < 3 or \
         comment.author is None:
             return False
@@ -112,7 +112,7 @@ def scrape_post(sub, post_type):
             print("The spacy model can't load. You need to install it with \npython -m spacy download en")
             exit(1)
         nlp.add_pipe('sentencizer')
-        nlp.get_pipe('sentencizer').max_length = 300
+        nlp.get_pipe('sentencizer').max_length = 230
         doc = nlp(text)
         data["text"] = [sent.text for sent in doc.sents if sent.text not in ["x200B", "", " "]]
         

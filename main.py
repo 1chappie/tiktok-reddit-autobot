@@ -20,7 +20,12 @@ def do_order(subreddit, post_type, time = 0):
 if __name__ == '__main__':
     random.seed(datetime.now())
     first_run()
-    if len(sys.argv) == 1:
-        do_order(*random.choice(config["default_pool"]))
-    else:
-        do_order(sys.argv[1], sys.argv[2])
+    try:
+        if len(sys.argv) == 1:
+            do_order(*random.choice(config["default_pool"]))
+        else:
+            do_order(sys.argv[1], sys.argv[2])
+    except (KeyboardInterrupt, Exception) as e:
+        print(e)
+        clean_temp()
+        exit(1)
