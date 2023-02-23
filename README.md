@@ -7,13 +7,12 @@ Automatic content bot - can scrape, render and upload content to TikTok from any
    `reddit_clientid`, `reddit_clientsecret`: can be obtained from [here](https://www.reddit.com/prefs/apps/) after creating a new web app \
    `reddit_username`, `reddit_password`: your Reddit username and password 
 # Usage
-0. To customize the assets: \
-   `rsc/background`: .mp4 videos of choice (randomly selected) \
-   `rsc/songs`: songs of choice (randomly selected, can be empty) \
-1. Run `python3 main.py` to scrape and upload content from the default pool of subreddits \
-or \
-2. Run `pyhton3 main.py <subreddit> <post_type>` to scrape and upload content from a specific subreddit \
-   `<subreddit>`: the subreddit to scrape from \
-   `<post_type>`: the type of post to scrape from (can be `story` or `comments`) \
+0. To customize the assets: 
+   * `rsc/background`: .mp4 videos of choice (randomly selected) 
+   * `rsc/songs`: songs of choice (randomly selected, can be empty) 
+1. Run `python3 main.py` to scrape and upload content from the default pool of subreddits 
+2. Or run `pyhton3 main.py <subreddit> <post_type>` to scrape and upload content from a specific subreddit 
+   * `<subreddit>`: the subreddit to scrape from 
+   * `<post_type>`: the type of post to scrape from (can be `story` or `comments`) \
    (`story` posts are posts with only a title and a body - split into cards with moviepy and spacy, \
    `comments` posts are posts with a title and a comment thread - screenshotted with selenium)
