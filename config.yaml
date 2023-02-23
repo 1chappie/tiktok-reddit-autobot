@@ -1,3 +1,22 @@
-debug: true
-tiktok_cookies: 
-reddit_cookies: 
+# CREDENTIALS
+tiktok_sessionid:  #must be updated every 2 months
+reddit_clientid: 
+reddit_clientsecret: 
+reddit_username: 
+reddit_password: 
+
+# PREFERENCES
+no_of_comments: 7
+speed: 1
+tiktok_voices: en_uk_003 #sparated by comma, a random one will be selected
+default_pool:
+  - ["askreddit", "comments"]
+  - ["askmen", "comments"]
+  - ["askwomen", "comments"]
+  - ["UnethicalLifeProTips", "comments"]
+  - ["explainlikeimfive", "comments"]
+  - ["tifu", "story"]
+  - ["nosleep", "story"]
+  - ["prorevenge", "story"]
+  - ["offmychest", "story"]
+  - ["pettyrevenge", "story"]
