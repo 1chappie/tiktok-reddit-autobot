@@ -3,7 +3,7 @@ Automatic content bot - can scrape, render and upload content to TikTok from any
 # Setup
 1. `pip install -r requirements.txt` (you may or may not need to have Chrome installed)
 2. Populate all categories in `config.yaml` \
-   `tiktok_sessionid`: can be obtained from the cookie header after logging into any TikTok \
+   `tiktok_sessionid`: can be obtained from the cookie header after logging into TikTok \
    `reddit_clientid`, `reddit_clientsecret`: can be obtained from [here](https://www.reddit.com/prefs/apps/) after creating a new web app \
    `reddit_username`, `reddit_password`: your Reddit username and password 
 # Usage
