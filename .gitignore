@@ -8,3 +8,4 @@ rsc/backgrounds/
 output/
 .DS_Store
 config.yaml
+rsc/log.json
