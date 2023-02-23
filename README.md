@@ -8,7 +8,7 @@ Automatic content bot - can scrape, render and upload content to TikTok from any
    `reddit_username`, `reddit_password`: your Reddit username and password 
 # Usage
 0. To customize the assets: 
-   * `rsc/background`: .mp4 videos of choice (randomly selected) 
+   * `rsc/background` (create folder): .mp4 videos of choice (randomly selected) 
    * `rsc/songs`: songs of choice (randomly selected, can be empty) 
 1. Run `python3 main.py` to scrape and upload content from the default pool of subreddits 
 2. Or run `pyhton3 main.py <subreddit> <post_type>` to scrape and upload content from a specific subreddit 
