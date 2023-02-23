@@ -25,7 +25,7 @@ def is_post_valid(post, post_type):
         (post_type== "comments" and post.num_comments < 30) or \
         (post_type == "story" and post.selftext == "") or \
         (post_type == "story" and post.selftext in ["[removed]", "[deleted]"]) or \
-        (post_type == "story" and len(post.selftext) >8000):
+        (post_type == "story" and len(post.selftext) >6000):
         print("Invalid post: " + str(post))
         return False
         

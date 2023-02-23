@@ -49,15 +49,17 @@ def render_video(post):
         )
     
     #Load music
-    song = AudioFileClip("rsc/songs/" + random.choice(os.listdir("rsc/songs")))
-    song = afx.audio_loop(song, duration=sound_clips.duration)
+    if len(os.listdir("rsc/songs")):
+        song = AudioFileClip("rsc/songs/" + random.choice(os.listdir("rsc/songs")))
+        song = afx.audio_loop(song, duration=sound_clips.duration)
+        song = song.set_start(0)
+        song = song.volumex(0.2)
+        sound_clips = sound_clips.set_start(0)
+        composite_audio = CompositeAudioClip([song, sound_clips])
+        composite_audio = composite_audio.set_duration(sound_clips.duration)
+    else:
+        composite_audio = sound_clips
     
-    # Composite all the components
-    song = song.set_start(0)
-    song = song.volumex(0.2)
-    sound_clips = sound_clips.set_start(0)
-    composite_audio = CompositeAudioClip([song, sound_clips])
-    composite_audio = composite_audio.set_duration(sound_clips.duration)
     
     composite = CompositeVideoClip([background,image_clips],resolution)
     composite.audio = composite_audio
